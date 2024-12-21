@@ -2,16 +2,27 @@
 > Вариант 2. Номер студенческого билета 21Б0996
 
 ```c
-#include <stdio.h>
-#include <unistd.h>
+\#include <stdio.h>
+\#include <stdlib.h>
+\#include <sys/types.h>
+\#include <unistd.h>
 
-int main(int argc, char *argv[]){
-	FILE *secret = fopen("/challenge/app-systeme/ch5/.passwd", "rt");
-	char buffer[32];
-	fgets(buffer, sizeof(buffer), secret);
-	printf(argv[1]);
-	fclose(secret);
-	return 0;
+void shell() {
+    setreuid(geteuid(), geteuid());
+    system("/bin/bash");
+}
+
+void sup() {
+    printf("Hey dude ! Waaaaazzaaaaaaaa ?!\\n");
+}
+
+void main()
+{ 
+    int var;
+    void (\*func)()=sup;
+    char buf\[128\];
+    fgets(buf,133,stdin);
+    func();
 }
 ```
 ## Настройка рабочего пространства
